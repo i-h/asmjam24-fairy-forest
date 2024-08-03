@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform _spaceIndicator = default;
     [SerializeField] private SpatialField _field;
     [SerializeField] private CinemachineVirtualCamera _camera;
+    [SerializeField] private FairyVisualizer _visualizer;
     [Header("Options")]
     [SerializeField] private MoveMode _mode = MoveMode.Regular;
     [SerializeField] private float[] _minMaxAngle = {60,90};
@@ -65,7 +66,8 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
                 break;
                 case MoveMode.OtherSide:
-                Dash();
+                //Dash();
+                Jump();
                 break;
             }
         }
@@ -82,12 +84,8 @@ public class PlayerMovement : MonoBehaviour
             if(_spaceBendActive && _field) {
                 lastSpaceBend = _field.GetValue(transform.position.x, transform.position.y, transform.position.z);
                 SetSpaceBend(lastSpaceBend);
-                var vel = _rb.velocity;
-                vel.y *= _fairyFriction;
-                _rb.velocity = vel;
 
             }
-            if(Input.GetKey(KeyCode.Space)) upwardsMovement = Hover();
         } else {
             forwardMovement.y = 0;
         }
@@ -100,39 +98,19 @@ public class PlayerMovement : MonoBehaviour
         _camera.m_Lens.FieldOfView = Mathf.Lerp(_minMaxAngle[1], _minMaxAngle[0], bend);
         transform.localScale = Vector3.one * Mathf.Lerp(1, 0.2f, bend);
         spaceBendEffect = GetSpaceBendEffect(bend);
+        if(_visualizer) _visualizer.Visualize(bend);
     }
 
     private void Jump(){
         if(Time.unscaledTime > _nextJump && IsGrounded()){
         _nextJump = Time.unscaledTime + _jumpCooldown;
             var velocity = _rb.velocity;
-            velocity.y = Mathf.Max(velocity.y, _jumpForce);
+            velocity.y = Mathf.Max(velocity.y, _jumpForce) * (_mode == MoveMode.OtherSide ? -1 : 1);
             _rb.velocity = velocity;
         }
     }
-    private Vector3 Hover(){
-        return Vector3.down;
-    }
-    private void Dash(){
-        if(Time.unscaledTime > _nextDash){
-            //StartCoroutine(DashCoroutine());
-        }
-    }
-    private IEnumerator DashCoroutine(){        
-        float dashProgress;
-        float dashStart = Time.unscaledTime;
-        _dashEnd = dashStart + _dashDuration;
-        Debug.Log("Dash Start");
-        while(Time.unscaledTime < _dashEnd){
-            dashProgress = (Time.unscaledTime - dashStart) / _dashDuration;            
-            yield return new WaitForEndOfFrame();
-        }
-        _nextDash = Time.unscaledTime + _dashCooldown;
-        Debug.Log("Dash Done");
-
-    }
     private bool IsGrounded(){
-        return Physics.Linecast(transform.position + Vector3.up, transform.position + Vector3.down * 0.2f, ~LayerMask.GetMask("Player"));
+        return Physics.Linecast(transform.position + transform.up, transform.position - transform.up * 0.2f, ~LayerMask.GetMask("Player"));
     }
     private float GetSpaceBendEffect(float value) => _spaceBendActive ? 1-0.8f*value : 1;
 }

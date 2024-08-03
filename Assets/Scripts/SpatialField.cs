@@ -5,11 +5,12 @@ using UnityEngine;
 public class SpatialField : MonoBehaviour
 {
     [SerializeField] private float scale = Mathf.PI * 2;
+    [SerializeField] private float timeScale = 0.1f;
     public float GetValue(float x, float y, float z){
         return (Evaluate(x)+Evaluate(y)+Evaluate(z))/3f;
     }
     private float Evaluate(float val) 
-        => Mathf.Pow(((-Mathf.Cos(2 * Mathf.PI * (val / scale)) + 1) / 2), Mathf.Exp(1));
+        => Mathf.Pow(((-Mathf.Cos(2 * Mathf.PI * (val / scale + Time.time * timeScale)) + 1) / 2), Mathf.Exp(1));
 
     // Start is called before the first frame update
     void Start()

@@ -100,7 +100,7 @@ MonoBehaviour:
   GameStarted: 0
   Paused: 0
   _normalGravity: -20
-  _otherSideGravity: 1
+  _otherSideGravity: 10
 --- !u!114 &6046963868137034880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 826dac65143fdea4b9c9272fa1a99beb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: 31.7
+  scale: 30
+  timeScale: 0.01
 --- !u!1001 &8364822506840739321
 PrefabInstance:
   m_ObjectHideFlags: 0
