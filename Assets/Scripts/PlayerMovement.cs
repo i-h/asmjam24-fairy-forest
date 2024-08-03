@@ -80,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
                 lastSpaceBend = _field.GetValue(transform.position.x, transform.position.y, transform.position.z);
                 SetSpaceBend(lastSpaceBend);
             }
+            if(Input.GetKey(KeyCode.Space)) Hover();
         } else {
             forwardMovement.y = 0;
         }
@@ -102,9 +103,12 @@ public class PlayerMovement : MonoBehaviour
             _rb.velocity = velocity;
         }
     }
+    private void Hover(){
+        _rb.MovePosition(transform.position + transform.up * _moveSpeed/2f * Time.deltaTime);
+    }
     private void Dash(){
         if(Time.unscaledTime > _nextDash){
-            StartCoroutine(DashCoroutine());
+            //StartCoroutine(DashCoroutine());
         }
     }
     private IEnumerator DashCoroutine(){        

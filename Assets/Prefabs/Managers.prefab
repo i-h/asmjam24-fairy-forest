@@ -99,7 +99,7 @@ MonoBehaviour:
   GameStarted: 0
   Paused: 0
   _normalGravity: -20
-  _otherSideGravity: 5
+  _otherSideGravity: 2
 --- !u!114 &6046963868137034880
 MonoBehaviour:
   m_ObjectHideFlags: 0
