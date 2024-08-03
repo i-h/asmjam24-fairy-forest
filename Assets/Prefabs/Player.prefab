@@ -61,7 +61,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1319995301305248087
 Transform:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   _input: {fileID: 4280106667307714180}
   _rb: {fileID: 2270382765404711946}
   _lookTransform: {fileID: 6666348062671891506}
-  _spaceIndicator: {fileID: 1319995301305248087}
+  _spaceIndicator: {fileID: 0}
   _field: {fileID: 0}
   _camera: {fileID: 8662773991509201887}
   _mode: 1
@@ -207,6 +207,7 @@ MonoBehaviour:
   _dashEnd: -1
   _dashDuration: 1.2
   _nextDash: -1
+  _fairyFriction: 0.9
   _changeVelocity: 20
 --- !u!54 &2270382765404711946
 Rigidbody:
