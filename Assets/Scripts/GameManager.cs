@@ -13,11 +13,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _otherSideGravity = 10;
 
 
-    void Awake(){
+    private void Awake(){
         instance = this;
     }
-    void Start(){
+    private void Start(){
         OtherSideManager.WorldChanged += OnWorldChanged;
+    }
+    private void OnDestroy(){
+        OtherSideManager.WorldChanged -= OnWorldChanged;
     }
 
     private void OnWorldChanged(OtherSideManager.World world){

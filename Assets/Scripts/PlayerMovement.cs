@@ -25,9 +25,35 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _dashEnd = -1;
     [SerializeField] private float _dashDuration = 1.2f;
     [SerializeField] private float _nextDash = -1;
+    [SerializeField] private float _changeVelocity = 20f;
     Vector2 _lastInput;
     float lastSpaceBend = 0;
+    float spaceBendEffect = 1;
 
+    private void Start(){
+        OtherSideManager.WorldChanged += OnWorldChanged;
+        SetSpaceBend(0);
+    }
+    private void OnDestroy(){
+        OtherSideManager.WorldChanged -= OnWorldChanged;
+    }
+    private void OnWorldChanged(OtherSideManager.World world){
+        _spaceBendActive = world == OtherSideManager.World.OtherSide;
+                var velocity = _rb.velocity;
+
+        switch(world){
+            case OtherSideManager.World.Normal:
+                _mode = MoveMode.Regular;
+                SetSpaceBend(0);
+                velocity.y = Mathf.Max(velocity.y, _changeVelocity);
+            break;
+            case OtherSideManager.World.OtherSide:
+                _mode = MoveMode.OtherSide;
+                velocity.y = Mathf.Max(velocity.y, -_changeVelocity);
+            break;
+        }
+                _rb.velocity = velocity;
+    }
     private void Update(){
         _lastInput = _input.GetInput();
 
@@ -49,14 +75,24 @@ public class PlayerMovement : MonoBehaviour
         Vector3 forwardMovement = _lookTransform.forward * _lastInput.y;
         Vector3 sidewaysMovement = _lookTransform.right * _lastInput.x;
 
-        if(_spaceBendActive && _field) {
-            lastSpaceBend = _field.GetValue(transform.position.x, transform.position.y, transform.position.z);
-            if(_spaceIndicator) _spaceIndicator.localScale = Vector3.one * lastSpaceBend;
-            _camera.m_Lens.FieldOfView = Mathf.Lerp(_minMaxAngle[1], _minMaxAngle[0], lastSpaceBend);
-            transform.localScale = Vector3.one * Mathf.Lerp(1, 0.2f, lastSpaceBend);
+        if(_mode == MoveMode.OtherSide){
+            if(_spaceBendActive && _field) {
+                lastSpaceBend = _field.GetValue(transform.position.x, transform.position.y, transform.position.z);
+                SetSpaceBend(lastSpaceBend);
+
+            }
+        } else {
+            forwardMovement.y = 0;
         }
 
-        _rb.MovePosition(transform.position + (forwardMovement+sidewaysMovement) * _moveSpeed * Time.deltaTime * GetSpaceBendEffect(lastSpaceBend));
+        _rb.MovePosition(transform.position + (forwardMovement+sidewaysMovement) * _moveSpeed * Time.deltaTime * spaceBendEffect);
+    }
+
+    private void SetSpaceBend(float bend){
+        if(_spaceIndicator) _spaceIndicator.localScale = Vector3.one * bend;
+        _camera.m_Lens.FieldOfView = Mathf.Lerp(_minMaxAngle[1], _minMaxAngle[0], bend);
+        transform.localScale = Vector3.one * Mathf.Lerp(1, 0.2f, bend);
+        spaceBendEffect = GetSpaceBendEffect(bend);
     }
 
     private void Jump(){

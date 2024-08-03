@@ -21,6 +21,8 @@ public class SmoothRotate : MonoBehaviour
     private Quaternion endRotation;
     private AnimationCurve currentCurve;
 
+    [SerializeField] private KeyCode rotateKey = KeyCode.E;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,7 @@ public class SmoothRotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isRotating)
+        if (Input.GetKeyDown(rotateKey) && !isRotating)
         {
             Rotate();
         }
@@ -54,8 +56,9 @@ public class SmoothRotate : MonoBehaviour
         }
     }
 
-    private void Rotate()
+    public void Rotate()
     {
+        if(isRotating) return;
         // Retrieve the current z-axis angle
         currentAngle = transform.rotation.eulerAngles.z;
         // If the angle is 0, call the RotateLeft() method

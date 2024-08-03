@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 2647887283512003936}
   - component: {fileID: 2270382765404711946}
   - component: {fileID: 4721096712258259951}
+  - component: {fileID: 9048790626319076728}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -193,12 +194,19 @@ MonoBehaviour:
   _spaceIndicator: {fileID: 1319995301305248087}
   _field: {fileID: 0}
   _camera: {fileID: 8662773991509201887}
+  _mode: 1
   _minMaxAngle:
   - 45
   - 75
   _spaceBendActive: 1
   _moveSpeed: 10
+  _jumpCooldown: 0.2
+  _dashCooldown: 0.8
   _jumpForce: 5
+  _nextJump: -1
+  _dashEnd: -1
+  _dashDuration: 1.2
+  _nextDash: -1
 --- !u!54 &2270382765404711946
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -249,6 +257,68 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &9048790626319076728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5212317441940699318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156e1ec69e4a148ddba083679b90b67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 1
+  currentAngle: 180
+  Leftcurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.004488005
+      outSlope: -0.004488005
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0
+      outWeight: 0.9522059
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.0024383068
+      outSlope: -0.0024383068
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.6298035
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  Rightcurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.004488005
+      outSlope: -0.004488005
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0
+      outWeight: 0.9522059
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.0024383068
+      outSlope: -0.0024383068
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.6298035
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5426394171713827936
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,5 +405,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb306d5b8f0c0d48837bd5201c3eb37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 250
+  mouseSensitivity: 350
   playerBody: {fileID: 2659414433808140260}
