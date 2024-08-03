@@ -21,12 +21,15 @@ public class SmoothRotate : MonoBehaviour
     private Quaternion endRotation;
     private AnimationCurve currentCurve;
 
+    public SFXManager sfxManager;
+
     [SerializeField] private KeyCode rotateKey = KeyCode.E;
 
     // Start is called before the first frame update
     void Start()
     {
         currentAngle = transform.rotation.eulerAngles.z;
+        sfxManager = GameObject.FindAnyObjectByType<SFXManager>();
     }
 
     // Update is called once per frame
@@ -79,6 +82,7 @@ public class SmoothRotate : MonoBehaviour
         endRotation = Quaternion.Euler(0, 0, 0);
         currentCurve = Rightcurve;
         isRotating = true;
+        sfxManager.PlayDiveIn();
     }
 
     public void RotateLeft()
@@ -87,5 +91,6 @@ public class SmoothRotate : MonoBehaviour
         endRotation = Quaternion.Euler(0, 0, 180);
         currentCurve = Leftcurve;
         isRotating = true;
+        sfxManager.PlayDiveOut();
     }
 }
