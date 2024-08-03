@@ -139,6 +139,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8494454095212906508}
     m_Modifications:
+    - target: {fileID: 907833303263023016, guid: 24af344046cb541f39c3100b1d77d83c,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1737360912435152883, guid: 24af344046cb541f39c3100b1d77d83c,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044366790902612687, guid: 24af344046cb541f39c3100b1d77d83c,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4778951422113599451, guid: 24af344046cb541f39c3100b1d77d83c,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8082038494494824807, guid: 24af344046cb541f39c3100b1d77d83c,
         type: 3}
       propertyPath: m_Name

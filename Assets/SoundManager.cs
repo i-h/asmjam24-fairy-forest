@@ -45,7 +45,6 @@ public class SoundManager : MonoBehaviour
     void UpdateMusicVolumes()
     {
         float t = Mathf.Clamp01((Time.unscaledTime - changeStart) / changeDuration);
-        Debug.Log(t);
         if (isPlayingMusic1)
         {
             backgroundMusic1.volume = t;
