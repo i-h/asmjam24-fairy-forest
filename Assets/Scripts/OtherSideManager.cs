@@ -22,10 +22,10 @@ public class OtherSideManager : MonoBehaviour
     {
         if(_currentWorld == World.Normal && _player.position.y < 0){
             ChangeWorld(World.OtherSide);
-            smoothRotate.RotateLeft();
+          //  smoothRotate.RotateLeft();
         } else if(_currentWorld == World.OtherSide && _player.position.y > 0){
             ChangeWorld(World.Normal);
-            smoothRotate.RotateRight();
+          //  smoothRotate.RotateRight();
         }
     }
     private void ChangeWorld(World world){

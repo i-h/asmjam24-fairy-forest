@@ -32,7 +32,7 @@ public class SmoothRotate : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isRotating)
         {
-            //Rotate();
+            Rotate();
         }
 
         if (isRotating)
