@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _dashEnd = -1;
     [SerializeField] private float _dashDuration = 1.2f;
     [SerializeField] private float _nextDash = -1;
+    [SerializeField] private float _fairyFriction = 0.9f;
+
     [SerializeField] private float _changeVelocity = 20f;
     Vector2 _lastInput;
     float lastSpaceBend = 0;
@@ -74,18 +76,23 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 forwardMovement = _lookTransform.forward * _lastInput.y;
         Vector3 sidewaysMovement = _lookTransform.right * _lastInput.x;
+        Vector3 upwardsMovement = Vector3.zero;
 
         if(_mode == MoveMode.OtherSide){
             if(_spaceBendActive && _field) {
                 lastSpaceBend = _field.GetValue(transform.position.x, transform.position.y, transform.position.z);
                 SetSpaceBend(lastSpaceBend);
+                var vel = _rb.velocity;
+                vel.y *= _fairyFriction;
+                _rb.velocity = vel;
+
             }
-            if(Input.GetKey(KeyCode.Space)) Hover();
+            if(Input.GetKey(KeyCode.Space)) upwardsMovement = Hover();
         } else {
             forwardMovement.y = 0;
         }
 
-        _rb.MovePosition(transform.position + (forwardMovement+sidewaysMovement) * _moveSpeed * Time.deltaTime * spaceBendEffect);
+        _rb.MovePosition(transform.position + (forwardMovement+sidewaysMovement+upwardsMovement) * _moveSpeed * Time.deltaTime * spaceBendEffect);
     }
 
     private void SetSpaceBend(float bend){
@@ -103,8 +110,8 @@ public class PlayerMovement : MonoBehaviour
             _rb.velocity = velocity;
         }
     }
-    private void Hover(){
-        _rb.MovePosition(transform.position + transform.up * _moveSpeed/2f * Time.deltaTime);
+    private Vector3 Hover(){
+        return Vector3.down;
     }
     private void Dash(){
         if(Time.unscaledTime > _nextDash){
