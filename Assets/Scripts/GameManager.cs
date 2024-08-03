@@ -46,4 +46,9 @@ public class GameManager : MonoBehaviour
             break;
         }
     }
+    private void Update(){
+        if(Input.GetKeyDown(KeyCode.F11)){
+            Screen.fullScreen = !Screen.fullScreen;
+        }
+    }
 }
