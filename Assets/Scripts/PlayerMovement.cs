@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnWorldChanged(OtherSideManager.World world){
         _spaceBendActive = world == OtherSideManager.World.OtherSide;
-                var velocity = _rb.velocity;
+        var velocity = _rb.velocity;
 
         switch(world){
             case OtherSideManager.World.Normal:
@@ -79,7 +79,6 @@ public class PlayerMovement : MonoBehaviour
             if(_spaceBendActive && _field) {
                 lastSpaceBend = _field.GetValue(transform.position.x, transform.position.y, transform.position.z);
                 SetSpaceBend(lastSpaceBend);
-
             }
         } else {
             forwardMovement.y = 0;
