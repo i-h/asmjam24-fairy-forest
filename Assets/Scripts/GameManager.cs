@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ColorCurves _curves; 
     [SerializeField] private float _normalGravity = -20f;
     [SerializeField] private float _otherSideGravity = 10;
+    [SerializeField] private Color _otherSideColor = Color.cyan;
 
 
     private void OnValidate(){
@@ -30,13 +31,18 @@ public class GameManager : MonoBehaviour
     }
 
     private void OnWorldChanged(OtherSideManager.World world){
-        RenderSettings.fog = world == OtherSideManager.World.OtherSide;
+        var otherSide = world == OtherSideManager.World.OtherSide;
+        RenderSettings.fog = otherSide;
+        Camera.main.clearFlags = otherSide ? CameraClearFlags.SolidColor : CameraClearFlags.Skybox;
+
         switch(world){
             case OtherSideManager.World.Normal:
                 Physics.gravity = Vector3.up * _normalGravity;
             break;
             case OtherSideManager.World.OtherSide:
                 Physics.gravity = Vector3.up * _otherSideGravity;
+                Camera.main.backgroundColor = _otherSideColor;
+                RenderSettings.fogColor = _otherSideColor;
             break;
         }
     }

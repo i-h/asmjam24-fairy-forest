@@ -99,8 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameStarted: 0
   Paused: 0
+  _curves: {fileID: 0}
   _normalGravity: -20
-  _otherSideGravity: 10
+  _otherSideGravity: 5
+  _otherSideColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!114 &6046963868137034880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 30
-  timeScale: 0.01
+  timeScale: 0.02
 --- !u!1001 &8364822506840739321
 PrefabInstance:
   m_ObjectHideFlags: 0
