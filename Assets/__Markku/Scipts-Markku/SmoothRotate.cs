@@ -32,7 +32,7 @@ public class SmoothRotate : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !isRotating)
         {
-            Rotate();
+            //Rotate();
         }
 
         if (isRotating)
@@ -70,7 +70,7 @@ public class SmoothRotate : MonoBehaviour
         }
     }
 
-    private void RotateRight()
+    public void RotateRight()
     {
         startRotation = transform.rotation;
         endRotation = Quaternion.Euler(0, 0, 0);
@@ -78,7 +78,7 @@ public class SmoothRotate : MonoBehaviour
         isRotating = true;
     }
 
-    private void RotateLeft()
+    public void RotateLeft()
     {
         startRotation = transform.rotation;
         endRotation = Quaternion.Euler(0, 0, 180);
