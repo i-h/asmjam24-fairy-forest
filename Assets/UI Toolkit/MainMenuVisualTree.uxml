@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/mainmenuStyle.uss?fileID=7433441132597879392&amp;guid=a90f98c3e0d8a7142b40b94939ec7116&amp;type=3#mainmenuStyle" />
+    <ui:VisualElement name="container" style="flex-grow: 1;">
+        <ui:Label tabindex="-1" text="TITLE" parse-escape-sequences="true" display-tooltip-when-elided="true" class="header" style="align-self: center; margin-top: 50px;" />
+        <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartGameButton" class="button" />
+        <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" class="button" />
+    </ui:VisualElement>
+</ui:UXML>
