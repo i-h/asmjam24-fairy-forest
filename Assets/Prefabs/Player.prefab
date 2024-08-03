@@ -207,6 +207,7 @@ MonoBehaviour:
   _dashEnd: -1
   _dashDuration: 1.2
   _nextDash: -1
+  _changeVelocity: 20
 --- !u!54 &2270382765404711946
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -216,7 +217,7 @@ Rigidbody:
   m_GameObject: {fileID: 5212317441940699318}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -319,6 +320,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  rotateKey: 101
 --- !u!1 &5426394171713827936
 GameObject:
   m_ObjectHideFlags: 0
