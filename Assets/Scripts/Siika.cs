@@ -13,5 +13,6 @@ public class Siika : MonoBehaviour
     void siika()
     {
         hud.SetActive(true);
+        gameObject.SetActive(false);
     }
 }
