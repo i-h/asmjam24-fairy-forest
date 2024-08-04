@@ -14290,6 +14290,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88a621976136dd546a07da86fc875894, type: 3}
+--- !u!1 &1359854236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3888837744839486905, guid: edb961c853ce69f4f99303d4e6cef974,
+    type: 3}
+  m_PrefabInstance: {fileID: 1669603295762632672}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1380501139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17705,6 +17711,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88a621976136dd546a07da86fc875894, type: 3}
+--- !u!1001 &1603515838
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1451340480672060162, guid: 76e538d64f33d32aebf46a59334c3879,
+        type: 3}
+      propertyPath: hud
+      value: 
+      objectReference: {fileID: 1359854236}
+    - target: {fileID: 2449592868006169233, guid: 76e538d64f33d32aebf46a59334c3879,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2741611
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449592868006169233, guid: 76e538d64f33d32aebf46a59334c3879,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.062
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449592868006169233, guid: 76e538d64f33d32aebf46a59334c3879,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.393031
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449592868006169233, guid: 76e538d64f33d32aebf46a59334c3879,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449592868006169233, guid: 76e538d64f33d32aebf46a59334c3879,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449592868006169233, guid: 76e538d64f33d32aebf46a59334c3879,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449592868006169233, guid: 76e538d64f33d32aebf46a59334c3879,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449592868006169233, guid: 76e538d64f33d32aebf46a59334c3879,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449592868006169233, guid: 76e538d64f33d32aebf46a59334c3879,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449592868006169233, guid: 76e538d64f33d32aebf46a59334c3879,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5865071587316303972, guid: 76e538d64f33d32aebf46a59334c3879,
+        type: 3}
+      propertyPath: m_Name
+      value: CollectibleSiika
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76e538d64f33d32aebf46a59334c3879, type: 3}
 --- !u!1001 &1613229307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24901,3 +24980,4 @@ SceneRoots:
   - {fileID: 1117667446}
   - {fileID: 13935578}
   - {fileID: 806042411}
+  - {fileID: 1603515838}
