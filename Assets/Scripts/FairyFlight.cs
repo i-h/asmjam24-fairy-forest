@@ -8,12 +8,17 @@ public class FairyFlight : MonoBehaviour
     [SerializeField] private Transform[] waypoints;
     private int currentTarget = 0;
     [SerializeField] private float speed = 2f;
+    private AudioSource audio;
     
     private void OnTriggerEnter(Collider c){
-        if(c.CompareTag("Player")) currentTarget++;
+        if(c.CompareTag("Player")) {
+            currentTarget++;
+            audio.Play();
+        }
     }
     private void Start(){
         transform.position = waypoints[0].position;
+        audio = GetComponent<AudioSource>();
     }
     void Update()
     {
