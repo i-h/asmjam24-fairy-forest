@@ -12,7 +12,10 @@ public class MouseLook : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Invoke(nameof(ResetCamera),0);
     }
+
+    private void ResetCamera() => transform.rotation = Quaternion.identity;
 
     void Update()
     {

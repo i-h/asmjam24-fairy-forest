@@ -48,7 +48,9 @@ public class PlayerMovement : MonoBehaviour
             case OtherSideManager.World.Normal:
                 _mode = MoveMode.Regular;
                 SetSpaceBend(0);
-                velocity.y = Mathf.Max(velocity.y, _changeVelocity);
+                if(Time.time > 1){
+                    velocity.y = Mathf.Max(velocity.y, _changeVelocity);
+                }
             break;
             case OtherSideManager.World.OtherSide:
                 _mode = MoveMode.OtherSide;
