@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public bool Paused = false;
     public static void StartGame() =>    instance.GameStarted = true;
     public static void Pause(bool pause) => instance.Paused = pause;
+    public static void WinGame(){
+        Debug.Log("voitit pelin btw");
+    }
     [SerializeField] private ColorCurves _curves; 
     [SerializeField] private float _normalGravity = -20f;
     [SerializeField] private float _otherSideGravity = 10;
